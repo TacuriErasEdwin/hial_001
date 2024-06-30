@@ -161,3 +161,14 @@ python manage.py makemigrations		 // para crear los modelos de las db
 python manage.py migrate		//hacemos un comig de la db se crean tablas, 
 					//se debe revisar mysql en la web
 
+22//Editamos el admin para su administración:
+//admin.py
+
+from django.contrib import admin
+from .models import Doctores, Sintomas, Cita
+
+admin.site.register(Doctores)
+admin.site.register(Sintomas)
+admin.site.register(Cita)
+
+
