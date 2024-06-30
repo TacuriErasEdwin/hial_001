@@ -38,7 +38,7 @@ django-admin startproject citas .	//creamos el proyecto "citam", para que me cre
 dir					//revisamos las carpetas creadas
 
 8.levanto mi servidor
-python manage.py runserver		// reviso en el navegador  http://127.0.0.1:8000/
+python manage.py runserver		// reviso en el navegador  http://127.0.0.1:8000/   //djando
 
 9. levantamos nuestro proyecto de citas
 python manage.py startapp citasmedicas	//el app es "citasmedicas"
@@ -170,5 +170,18 @@ from .models import Doctores, Sintomas, Cita
 admin.site.register(Doctores)
 admin.site.register(Sintomas)
 admin.site.register(Cita)
+
+23//  Creamos el usuario administrador cmd
+
+python manage.py createsuperuser	//ingresamos usuario, email y pasword
+python manage.py runserver
+
+///U: etacuri
+//C: Daniela*2020
+//Email: edusin181@gmail.com
+
+actualizamos el navegador con django y luego colocamos
+				http://127.0.0.1:8000/		//sobre django
+				http://127.0.0.1:8000/admin/	//se actualiza
 
 
