@@ -6,14 +6,14 @@ from .models import Doctores, Sintomas, Cita
 # Create your views here.
 
 
-class Doctoresview(viewsets.ModelViewSet):
+class DoctoresView(viewsets.ModelViewSet):
 	serializer_class = DoctoresSerializer
 	queryset = Doctores.objects.all()
 
-class Sintomasview(viewsets.ModelViewSet):
+class SintomasView(viewsets.ModelViewSet):
 	serializer_class = SintomasSerializer
 	queryset = Sintomas.objects.all()
 
-class Citaview(viewsets.ModelViewSet):
+class CitaView(viewsets.ModelViewSet):
 	serializer_class = CitaSerializer
 	queryset = Cita.objects.all()
