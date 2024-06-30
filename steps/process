@@ -1,0 +1,40 @@
+1. crear un proyecto
+c/usuarios/edu/DjangoProyects/app003
+
+cd C:\Users\edu\DjangoProyects\app003  //para ingresar
+C:\Users\edu\DjangoProyects\app002>cd app003
+
+3 C:\Users\edu\DjangoProyects\app003>dir  // (comando dir)
+---------------------
+4. Python --version
+C:\Users\edu\DjangoProyects\app002>Python --version  //version
+
+5. instalamos maquina virtual (para cada aplicacion)
+
+pip install virtualenv  // instalamos la maquina virtual en el proyecto
+python -m venv venv	// comando para crear la maquina virtual y el nombre es VENV
+
+			//Activar el entorno VIRTUAL: 
+venv\Scripts\activate	//vamos a activar el entorno virtual
+dir			//para ver las carpeta creada "venv"
+
+-------------
+---------------------
+4. Python --version
+C:\Users\edu\DjangoProyects\app002>Python --version  //version
+
+5. instalamos maquina virtual (para cada aplicacion)
+
+pip install virtualenv  // instalamos la maquina virtual en el proyecto
+python -m venv venv	// comando para crear la maquina virtual y el nombre es VENV
+
+			//Activar el entorno VIRTUAL: 
+venv\Scripts\activate	//vamos a activar el entorno virtual
+dir			//para ver las carpeta creada "venv"
+
+6. Instalamos django: pip install django
+pip install django		           //empezamos a cargar las librerias, dentro de la carpeta "app002"
+pip install djangorestframework  //
+pip install mysqlclient pymysql  //instalamos el cliente de mysql
+pip install django-cors-headers  //los permisos
+
