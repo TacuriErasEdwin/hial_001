@@ -96,4 +96,7 @@ REST_FRAMEWORK = {
 
 14 generamos las migraciones, para que todo lo configurado e instaldo este correcto en CMD: 
 
-python manage.py migrate  	//revisar que este bien
+python manage.py migrate  		//revisar que este bien
+
+15. Levantamos el proyecto   (sin errores)
+python manage.py runserver		//se eliminan errores
