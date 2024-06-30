@@ -1,3 +1,18 @@
 
 Creamos un archivo 
 //citasmedicas/serializer.py    //creamos el archivo serializer.py
+
+//nos dirigimos  citasmedicas-->urls.py  creamos el archivo urls.py / /creamos una nueva url
+//citasmedica-->urls.py   //cargamos el siguiente codigo y actulaizamos
+
+from django.urls import path, include
+from . import views
+from rest_framework import routers
+
+urlpatterns = [
+    path('api/v1/', include(router.urls)),   # atravez de esta ruta vamos a llamar a los elementos
+    ]
+
+
+		                	//instalamos en la consola cmd
+pip install coreapi  	//instalamos toda la documentacion instlar automaticamente del api
