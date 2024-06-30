@@ -138,7 +138,7 @@ DATABASES = {
 motor de BD
                 'NAME': 'dbname', 	// app03db
                 'USER': 'root',		//root
-                'PASSWORD': 'test',	//puede queda vacio si no hay clave''
+                'PASSWORD': '',		//puede queda vacio si no hay clave''
                 'HOST': '127.0.0.1',	//
                 'PORT': '3306',		//
         }
