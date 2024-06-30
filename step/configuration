@@ -173,7 +173,7 @@ admin.site.register(Cita)
 
 23//  Creamos el usuario administrador cmd
 
-python manage.py createsuperuser	//ingresamos usuario, email y pasword
+python manage.py createsuperuser	//ingresamos usuario, email y password
 python manage.py runserver
 
 ///U: etacuri
@@ -184,4 +184,23 @@ actualizamos el navegador con django y luego colocamos
 				http://127.0.0.1:8000/		//sobre django
 				http://127.0.0.1:8000/admin/	//se actualiza
 
+//hsta aqui se debe ingresar con usuario y contraseña a la base de datos y poder cargar con información.
+
+=============================================================
+//pasos abreviados para levantar la app:
+PASOS PARA ABRIR EL PROYECTO
+cuando necesitamos abrir la consolda CMD: (modo administrador)
+cd C:\Users\edu\DjangoProyects\app003
+
+Python --version
+venv\Scripts\activate			//vamos a activar el entorno virtual
+dir					//para ver las carpeta creada "venv"
+
+
+python manage.py runserver		// levanto mi servidor django
+http://127.0.0.1:8000/			//abrimos el navegador y cargamos
+code .					//con code abrimos nuestro editor visual studio code
+
+					//abrimos el xampp control, luego
+					//activamos apache y mysql
 
