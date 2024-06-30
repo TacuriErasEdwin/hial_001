@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'citas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.mysql', #ENGINE es motor de BD
         'NAME': 'app03db',
         'USER': 'root',
-        'PASSWORD': 'test',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
