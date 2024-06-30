@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-hyl=@40n9iko-v(tbs0qz*uj_-#=_&$@(75s4=hs3!tz+3oa5g
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+MEDIA_ROOT = '/media/'
 
 # Application definition
 
@@ -81,8 +81,11 @@ WSGI_APPLICATION = 'citas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-
+        'NAME': 'app03db',
+        'USER': 'root',
+        'PASSWORD': 'test',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
