@@ -1,9 +1,10 @@
 PARAMETROS DE CONFIGURACION PARA UNA APP WEB
-1. crear un proyecto
+1. crear un proyecto "app003"
 c/usuarios/edu/DjangoProyects/app003
 
-cd C:\Users\edu\DjangoProyects\app003  //para ingresar
-C:\Users\edu\DjangoProyects\app003>cd app003
+cd C:\Users\edu\DjangoProyects\app003  	//para ingresar a la carpeta
+
+		//nos queda la direccion C:\Users\edu\DjangoProyects\app003>cd app003
 
 3 C:\Users\edu\DjangoProyects\app003>
 
@@ -31,4 +32,19 @@ pip install django		        //empezamos a cargar las librerias, dentro de la car
 pip install djangorestframework  	//
 pip install mysqlclient pymysql  	//instalamos el cliente de mysql
 pip install django-cors-headers  	//los permisos
+
+7. vamos a crear un proyecto
+django-admin startproject citas .	//creamos el proyecto "citam", para que me cree en la raiz
+dir					//revisamos las carpetas creadas
+
+8.levanto mi servidor
+python manage.py runserver		// reviso en el navegador  http://127.0.0.1:8000/
+
+9. levantamos nuestro proyecto de citas
+python manage.py startapp citasmedicas	//el app es "citasmedicas"
+
+10. editamos nuestra configuración a nivel código
+code .				//con code abrimos nuestro editor
+				// de visual estudio con las carpetas creadas
+
 
