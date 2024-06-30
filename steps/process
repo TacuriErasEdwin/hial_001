@@ -1,40 +1,34 @@
+PARAMETROS DE CONFIGURACION PARA UNA APP WEB
 1. crear un proyecto
 c/usuarios/edu/DjangoProyects/app003
 
 cd C:\Users\edu\DjangoProyects\app003  //para ingresar
-C:\Users\edu\DjangoProyects\app002>cd app003
+C:\Users\edu\DjangoProyects\app003>cd app003
 
-3 C:\Users\edu\DjangoProyects\app003>dir  // (comando dir)
+3 C:\Users\edu\DjangoProyects\app003>
+
+dir  				// (comando dir)
 ---------------------
 4. Python --version
-C:\Users\edu\DjangoProyects\app002>Python --version  //version
+C:\Users\edu\DjangoProyects\app003>
 
-5. instalamos maquina virtual (para cada aplicacion)
+Python --version  		//version del python
 
-pip install virtualenv  // instalamos la maquina virtual en el proyecto
-python -m venv venv	// comando para crear la maquina virtual y el nombre es VENV
+5. instalamos maquina virtual (para cada aplicacion p003)
 
-			//Activar el entorno VIRTUAL: 
-venv\Scripts\activate	//vamos a activar el entorno virtual
-dir			//para ver las carpeta creada "venv"
+pip install virtualenv  	// instalamos la maquina virtual en el proyecto
+python -m venv venv		// comando para crear la maquina virtual y el nombre es VENV
+				//Activar el entorno VIRTUAL: 
+venv\Scripts\activate		//vamos a activar el entorno virtual
+dir				//para ver las carpeta creada "venv"
 
 -------------
 ---------------------
-4. Python --version
-C:\Users\edu\DjangoProyects\app002>Python --version  //version
 
-5. instalamos maquina virtual (para cada aplicacion)
+6. Instalamos django: pip install django en el proyecto
 
-pip install virtualenv  // instalamos la maquina virtual en el proyecto
-python -m venv venv	// comando para crear la maquina virtual y el nombre es VENV
-
-			//Activar el entorno VIRTUAL: 
-venv\Scripts\activate	//vamos a activar el entorno virtual
-dir			//para ver las carpeta creada "venv"
-
-6. Instalamos django: pip install django
-pip install django		           //empezamos a cargar las librerias, dentro de la carpeta "app002"
-pip install djangorestframework  //
-pip install mysqlclient pymysql  //instalamos el cliente de mysql
-pip install django-cors-headers  //los permisos
+pip install django		        //empezamos a cargar las librerias, dentro de la carpeta "app002"
+pip install djangorestframework  	//
+pip install mysqlclient pymysql  	//instalamos el cliente de mysql
+pip install django-cors-headers  	//los permisos
 
