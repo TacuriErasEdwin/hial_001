@@ -100,3 +100,27 @@ python manage.py migrate  		//revisar que este bien
 
 15. Levantamos el proyecto   (sin errores)
 python manage.py runserver		//se eliminan errores
+
+------------------------------
+16. Creamos la base de datos en mysql citasdb, para que se conecte con django
+		//	activamos xaamp-control (el programa)
+		//	verificamos el puerto donde escucha(80)
+
+		//abrimosen xampp conf para la base de datos
+		//----	#Listen 12.34.56.78:80
+		//----Listen 80
+
+		//-----ServerName localhost:80
+
+		// activamos apache y mysql
+		luego colocamos en el navegador:
+
+http://localhost:80/phpmyadmin
+
+17. creamos la base de datos
+
+creamos la base de datos phpMyAdmin: (en el navegador)
+
+name: app03db
+utf8mb3_general_ci--->utf16_general_ci
+
