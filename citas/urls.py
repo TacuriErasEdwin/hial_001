@@ -1,5 +1,5 @@
 """
-URL configuration for django_citam project.
+URL configuration for citas project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-	path('admin/', admin.site.urls),
-	path('', include('django_citas.urls'))
+    path('admin/', admin.site.urls),
+    path('', include('citasmedicas.urls'))
 ]
