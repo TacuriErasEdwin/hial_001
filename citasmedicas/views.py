@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 from rest_framework import viewsets
-from .serializer import DoctoresSerializer, SintomasSerializer, CitaSerializer 
+from .serializer import DoctoresSerializer, SintomasSerializer, CitaSerializer
 from .models import Doctores, Sintomas, Cita
+from django.shortcuts import render 
+
 # Create your views here.
 
 
