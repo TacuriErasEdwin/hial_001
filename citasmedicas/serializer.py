@@ -1,19 +1,18 @@
-from rest_framework import serializer
+from rest_framework import serializers
 from .models import Doctores, Sintomas, Cita
 
+class DoctoresSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Doctores
+        #fields:('id', 'nombre','apellido')
+        fields = '__all__'
 
-class DoctoresSerializer (serializer.ModelsSerializer):
-	class Meta:
-		model = Doctores
-		#fields:('id','nombre')
-		field = '_all_'
+class SintomasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sintomas
+        fields = '__all__'
 
-class SintomasSerializer (serializer.ModelsSerializer):
-	class Meta:
-		model = Sintomas
-		field = '_all_'
-
-class CitaSerializer (serializer.ModelsSerializer):
-	class Meta:
-		model = Cita
-		field = '_all_'
+class CitaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cita
+        fields = '__all__'
