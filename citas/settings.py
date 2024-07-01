@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'citasmedicas',
     'citas',
     'rest_framework',
+    #'coreapi',
 ]
 
 MIDDLEWARE = [
