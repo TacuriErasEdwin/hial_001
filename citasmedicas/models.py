@@ -26,6 +26,5 @@ class Cita(models.Model):
     fecha_hora = models.DateTimeField()
     created_at=models.DateTimeField(auto_now_add=True)
 
-
     def __str__(self) -> str:
         return self.motivo
