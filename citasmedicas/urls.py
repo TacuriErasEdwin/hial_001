@@ -9,9 +9,9 @@ router.register(r'sintomas', views.SintomasView, 'sintomas')
 router.register(r'cita', views.CitaView, 'cita')
 
 urlpatterns = [
-    #path('home/',views.principal ),
+    path('home/',views.principal ),
     #path('about/',views.about ),
-    #path('doctores/',views.doctores ),
+    path('doctores/',views.doctores ),
     path('api/v1',include(router.urls) ),
-    #path('docsapi/',include_docs_urls(title='Citas Medicas API V2') ),
+   # path('docsapi/',include_docs_urls(title='Citas Medicas API V2') ),
 ]
