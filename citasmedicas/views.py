@@ -8,6 +8,18 @@ from django.shortcuts import render
 
 # Create your views here.
 
+def principal(request):
+    title='Portal de citas medicas'
+    return render(request,'home.html', {'title':title})
+
+def doctores(request):
+    doctores = Doctores.objects.all()
+    return render(request, 'doctores.html',{'doctores':doctores})
+
+def about(request):
+    return HttpResponse("<h2>About</h2>")
+
+#las vistas para el serializer
 
 class DoctoresView(viewsets.ModelViewSet):
 	serializer_class = DoctoresSerializer
