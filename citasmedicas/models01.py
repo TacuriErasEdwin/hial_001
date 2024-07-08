@@ -1,21 +1,21 @@
 from django.db import models
-from datetime import date
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
+from datetime import date
 
 # Create your models here.
 
-class Personas(models.Model):
+class Persona(models.Model):
     
-    opciont = [
+    menu = [
         ('pa','Paciente'),
-        ('me', 'Médico'),
+        ('do', 'Doctor'),
         ('se','Secretaria'),
         ('au','Auxiliar'),
-        ('ad','Administrador'),
+        ('ge','Gerente'),
     ]
-    tipo_persona = models.CharField(max_length=20, choices=opciont, default='pa')
-   
+    rol_persona = models.CharField(max_length=20, choices=menu, default='pa')
+
     cedula = models.CharField(primary_key=True, max_length=10, validators=[RegexValidator(r'^\d{1,10}$')]) #utilizar validador de expresiones regulares para garantizar que esté compuesto por dígitos
     apellidos = models.CharField(max_length=50)
     nombres = models.CharField(max_length=50)
@@ -35,82 +35,78 @@ class Personas(models.Model):
         abstract = True
 
     def __str__(self) -> str:
-        return f"{self.nombres} {self.apellidos} - {self.tipo_persona}"
-
-class Pacientes(Personas):
-    tipo_persona = 'pa'
+        return f"{self.apellidos} {self.nombres} - {self.cedula}"
+    
+class Paciente(Persona):
+    rol_persona = 'pa'
        
-    def edades(self):
-        today = date.today()
-        edad = today.year - self.fecha_nacimiento.year - (
-                    (today.month, today.day) < (self.fecha_nacimiento.month, self.fecha_nacimiento.day))
-        return edad
+    def edad(self, obj):
+        return obj.edad
+    edad.short_description = 'edad'
 
     def __str__(self) -> str:
-        return f"Paciente {self.nombres} {self.apellidos}"
+        return f"{self.apellidos} {self.nombres}"
 
-class Medicos(Personas):
-    tipo_persona = 'me'
+class Doctor(Persona):
+    rol_persona = 'do'
     
     def __str__(self) -> str:
-        return f"Médico {self.nombres} {self.apellidos}"
-
-
-class Especialidades(models.Model):
-    nombre_espe = models.CharField(max_length=50)
-    descripcion_espe = models.CharField(max_length=500)
-    fecha_regis_datos = models.DateField()
-    usuario_regis_datos = models.CharField(max_length=50)
-    fecha_modif_regis = models.DateField()
-    usuario_modif_regis = models.CharField(max_length=50)
-    medico = models.ManyToManyField(Medicos)
+        return f"{self.apellidos} {self.nombres}"
     
-    opcions = [
-        ('ac','Activo'),
-        ('des', 'Desactivo'),
-    ]
-    estatus_espe = models.CharField(max_length=13, choices=opcions, default='ac')
- 
+class Especialidad(models.Model):
+    nombre = models.CharField(max_length=20)
+    fecha_registro = models.DateTimeField()
+    fecha_modificacion = models.DateTimeField()
+    doctor = models.ManyToManyField(Doctor, through='DocEspe') 
+       
     def __str__(self) -> str:
-        return self.nombre_espe +" "+ self.estatus_espe
+        return self.nombre 
 
-class Citas(models.Model):
-    autor = models.ForeignKey(User,on_delete=models.CASCADE)  
-    paciente =  models.ManyToManyField(Pacientes)
-    medico = models.ManyToManyField(Medicos)
-    especialidad = models.ForeignKey(Especialidades,on_delete=models.CASCADE)
+class DocEspe(models.Model): #establece la relación entre doctores y especialidades
+    id_doc = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    id_espe = models.ForeignKey(Especialidad, on_delete=models.CASCADE)
+    estado = models.BooleanField(default=True)
+    quantity = models.IntegerField(default=1) #un doctor debería tener una especialidad
+
+
+class Cita(models.Model):
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE) #Un paciente puede tomar varias citas
+    docespe = models.ForeignKey(DocEspe, on_delete=models.CASCADE)
+    motivo = models.CharField(max_length=200)
     fecha_hora = models.DateTimeField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f"Cita para: {self.paciente.nombres} {self.paciente.apellidos} Motivo: {self.motivo} Fecha y hora: {self.fecha_hora}"
+
+class AtencionMedica(models.Model):
+    cita = models.OneToOneField(Cita,on_delete=models.CASCADE,null=False,blank=False) #Cita genera una atención sin ella no abrá atención
+    observaciones = models.CharField(max_length=200)
+    acude = models.CharField(max_length=10)
+
+    def __str__(self) -> str:
+        return self.observaciones
     
-    def _str_(self) -> str:
-        return self.fecha_hora
-
-class Consulta_medica(models.Model):
-    cita = models.ForeignKey(Citas,on_delete=models.CASCADE) 
-    
-    opciona = [
-        ('si','si'),
-        ('no', 'no'),
-    ]
-    estatus_atencion = models.CharField(max_length=2, choices=opciona, default='si')
-       
-    motivo = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.estatus_atencion
-
-class Historia_clinica(models.Model):
-    consulta_med = models.ForeignKey(Consulta_medica,on_delete=models.CASCADE)
-    triaje_peso = models.IntegerField()
-    triaje_talla = models.IntegerField()
-    triaje_tempe = models.IntegerField()
-    triaje_presion = models.CharField(max_length=10)
+class HistoriaMedica(models.Model):
+    atencionMedica = models.OneToOneField(AtencionMedica,on_delete=models.CASCADE)
+    fechadiagnostico = models.DateTimeField()
+    temperatura = models.IntegerField()
+    talla = models.IntegerField()
+    peso = models.IntegerField()
+    presion = models.IntegerField()
     diagnostico = models.CharField(max_length=200)
-    enfermedad = models.CharField(max_length=200)
+    indicaciones = models.CharField(max_length=200)
     receta = models.CharField(max_length=200)
-    pedido_examenes = models.CharField(max_length=200)
-    proximo_control = models.DateField()
-   
-    def __str__(self):
-        return (f'Diagnóstico: {self.diagnostico} Receta: {self.receta} Próximo control: {self.proximo_control}')
+    fechaproximocontrol = models.DateTimeField()
 
+    def __str__(self) -> str:
+        return self.diagnostico
+    
+class Farmacia(models.Model):
+    historiamed = models.OneToOneField(HistoriaMedica,on_delete=models.CASCADE)
+    fechaentregaM = models.DateTimeField()
+    medicamentos = models.CharField(max_length=200)
+
+    def __str__(self) -> str:
+        return f"Entregado el: {self.fechaentregaM} Medicamentos: {self.medicamentos}"
