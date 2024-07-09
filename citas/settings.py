@@ -20,13 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hyl=@40n9iko-v(tbs0qz*uj_-#=_&$@(75s4=hs3!tz+3oa5g'
+SECRET_KEY = 'django-insecure-bbfqe1m!w9iv!iyy54tl(lp$f7(p^=t6hd3(vm188(_c9w7zj$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 MEDIA_ROOT = '/media/'
+
 
 # Application definition
 
@@ -38,10 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'citasmedicas',
-    'citas',
+    'citasmedicas', 
     'rest_framework',
-    #'coreapi',
 ]
 
 MIDDLEWARE = [
@@ -82,13 +81,14 @@ WSGI_APPLICATION = 'citas.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', #ENGINE es motor de BD
-        'NAME': 'app03db',
+        'NAME': 'app04db',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '',	
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
+
 
 
 # Password validation
@@ -138,3 +138,4 @@ CORS_ALLOWED_ORIGINS = []
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     }
+
