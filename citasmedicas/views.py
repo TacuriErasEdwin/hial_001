@@ -2,33 +2,77 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from rest_framework import viewsets
-from .serializer import DoctoresSerializer, SintomasSerializer, CitaSerializer
-from .models import Doctores, Sintomas, Cita
-from django.shortcuts import render 
+from .serializer import PacienteSerializer, DoctorSerializer, EspecialidadSerializer, DocEspeSerializer, CitaSerializer, AtencionMedicaSerializer, HistoriaMedicaSerializer, FarmaciaSerializer
+from .models import Paciente, Doctor, Especialidad, DocEspe, Cita, AtencionMedica, HistoriaMedica, Farmacia
+
+# Llamar a los templates
+def index(request):                                          #nombre será el que se llame en la urls views.index 
+    title='Portal de citas medicas'                          #una variable
+    return render(request, 'home.html', {'title':title})     #llamo a la variable
+
+def paciente(request):
+    paciente = Paciente.objects.all()
+    return render(request, 'paciente.html',{'paciente':paciente})
+
+def doctor(request):
+    doctor = Doctor.objects.all()
+    return render(request, 'doctor.html',{'doctor':doctor})
+
+def especialidad(request):
+    especialidad = Especialidad.objects.all()
+    return render(request, 'especialidad.html',{'especialidad':especialidad})
+
+def docEspe(request):
+    docEspe = DocEspe.objects.all()
+    return render(request, 'docEspe.html',{'docEspe':docEspe})
+
+def cita(request):
+    cita = Cita.objects.all()
+    return render(request, 'cita.html',{'cita':cita})
+
+def atencionMedica(request):
+    atencionMedica = AtencionMedica.objects.all()
+    return render(request, 'atencionMedica.html',{'atencionMedica':atencionMedica})
+
+def historiaMedica(request):
+    historiaMedica = HistoriaMedica.objects.all()
+    return render(request, 'historiaMedica.html',{'historiaMedica':historiaMedica})
+
+def farmacia(request):
+    farmacia = Farmacia.objects.all()
+    return render(request, 'farmacia.html',{'farmacia':farmacia})
 
 # Create your views here.
+#vistas para el serializer
 
-def principal(request):
-    title='Portal de citas medicas'
-    return render(request,'home.html', {'title':title})
+class PacienteView(viewsets.ModelViewSet):
+    serializer_class = PacienteSerializer
+    queryset = Paciente.objects.all()
 
-def doctores(request):
-    doctores = Doctores.objects.all()
-    return render(request, 'doctores.html',{'doctores':doctores})
+class DoctorView(viewsets.ModelViewSet):
+    serializer_class = DoctorSerializer
+    queryset = Doctor.objects.all()
 
-def about(request):
-    return HttpResponse("<h2>About</h2>")
+class EspecialidadView(viewsets.ModelViewSet):
+    serializer_class = EspecialidadSerializer
+    queryset = Especialidad.objects.all()
 
-#las vistas para el serializer
-
-class DoctoresView(viewsets.ModelViewSet):
-	serializer_class = DoctoresSerializer
-	queryset = Doctores.objects.all()
-
-class SintomasView(viewsets.ModelViewSet):
-	serializer_class = SintomasSerializer
-	queryset = Sintomas.objects.all()
+class DocEspeView(viewsets.ModelViewSet):
+    serializer_class = DocEspeSerializer
+    queryset = DocEspe.objects.all()
 
 class CitaView(viewsets.ModelViewSet):
-	serializer_class = CitaSerializer
-	queryset = Cita.objects.all()
+    serializer_class = CitaSerializer
+    queryset = Cita.objects.all()
+
+class AtencionMedicaView(viewsets.ModelViewSet):
+    serializer_class = AtencionMedicaSerializer
+    queryset = AtencionMedica.objects.all()
+
+class HistoriaMedicaView(viewsets.ModelViewSet):
+    serializer_class = HistoriaMedicaSerializer
+    queryset = HistoriaMedica.objects.all()
+
+class FarmaciaView(viewsets.ModelViewSet):
+    serializer_class = FarmaciaSerializer
+    queryset = Farmacia.objects.all()
