@@ -1,18 +1,45 @@
 from rest_framework import serializers
-from .models import Doctores, Sintomas, Cita
+from .models import Paciente, Doctor, Especialidad, DocEspe, Cita, AtencionMedica, HistoriaMedica, Farmacia
 
-class DoctoresSerializer(serializers.ModelSerializer):
+class PacienteSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Doctores
-        #fields:('id', 'nombre','apellido')
+        model = Paciente
         fields = '__all__'
 
-class SintomasSerializer(serializers.ModelSerializer):
+class DoctorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Sintomas
+        model = Doctor
+        fields = '__all__'
+
+class EspecialidadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Especialidad
+        fields = '__all__'
+
+class DocEspeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DocEspe
         fields = '__all__'
 
 class CitaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cita
         fields = '__all__'
+
+class AtencionMedicaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AtencionMedica
+        fields = '__all__'
+
+class HistoriaMedicaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HistoriaMedica
+        fields = '__all__'
+
+class FarmaciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Farmacia
+        fields = '__all__'
+
+
+
