@@ -68,6 +68,8 @@ class DocEspe(models.Model): #establece la relación entre doctores y especialid
     estado = models.BooleanField(default=True)
     quantity = models.IntegerField(default=1) #un doctor debería tener una especialidad
     
+   # def _str_(self) -> str:
+    #    return (f'La especialidad: {self.id_espe.nombre} se habilita al doctor: {self.id_doc.apellidos}   ').
  
 
 class Cita(models.Model):
@@ -105,7 +107,7 @@ class HistoriaMedica(models.Model):
         return self.diagnostico
     
 class Farmacia(models.Model):
-    historiamed = models.OneToOneField(HistoriaMedica,on_delete=models.CASCADE)
+    historiaMed = models.OneToOneField(HistoriaMedica,on_delete=models.CASCADE)
     fechaentregaM = models.DateTimeField()
     medicamentos = models.CharField(max_length=200)
 
