@@ -173,12 +173,12 @@ admin.site.register(Cita)
 
 23//  Creamos el usuario administrador cmd
 
-python manage.py createsuperuser	//ingresamos usuario, email y password
+python manage.py createsuperuser	//ingresamos usuario, email y pasword
 python manage.py runserver
 
-///U: etacuri
-//C: Daniela*2020
-//Email: edusin181@gmail.com
+///U: hialedu
+//Email: eetacuri@utpl.edu.ec
+//C: DAADSADO
 
 actualizamos el navegador con django y luego colocamos
 				http://127.0.0.1:8000/		//sobre django
