@@ -30,7 +30,7 @@ MEDIA_ROOT = '/media/'
 
 
 # Application definition
-
+  
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -127,10 +127,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 #cors authotization
 CORS_ALLOWED_ORIGINS = []
@@ -139,3 +141,4 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
     }
 
+STATICFILES_DIRS=[BASE_DIR/"static"]
